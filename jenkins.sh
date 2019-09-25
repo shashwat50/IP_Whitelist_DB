@@ -73,9 +73,9 @@ echo $i,$id,$site_name,$site_id >> temp_IP.txt
 done
 done
 cat temp_IP.txt | ssh ec2-user@3.223.76.241 "sudo tee /var/lib/mysql/temp_ip.txt"
-mysql -u infosec -h 3.223.76.241 -p$password whitelisted 2>/dev/null << EOF
-LOAD DATA INFILE '~/temp_ip.txt' into table expanded_ips FIELDS TERMINATED BY ',' (ip, whitelist_id, site_name, site_id);
-EOF
+#mysql -u infosec -h 3.223.76.241 -p$password whitelisted 2>/dev/null << EOF
+#LOAD DATA INFILE '~/temp_ip.txt' into table expanded_ips FIELDS TERMINATED BY ',' (ip, whitelist_id, site_name, site_id);
+#EOF
 echo ""
 echo "-------------IPs added to DB successfully--------------"
 else
